@@ -76,10 +76,23 @@ form.addEventListener("submit", function (e) {
 
     `;
 
-    membersGrid.insertAdjacentHTML("beforeend", newCard);
+   membersGrid.insertAdjacentHTML("beforeend", newCard);
 
-    form.reset();
+// Hanapin ang huling card na naidagdag
+const lastCard = membersGrid.lastElementChild;
 
-    modal.style.display = "none";
+// Delete Button
+lastCard.querySelector(".delete").addEventListener("click", function(){
 
+    if(confirm("Delete this family member?")){
+
+        lastCard.remove();
+
+    }
+
+});
+
+form.reset();
+
+modal.style.display = "none";
 });
