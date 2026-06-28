@@ -1,6 +1,6 @@
 const upload = document.getElementById("photoUpload");
 
-const gallery = document.querySelector(".gallery-grid");
+const gallery = document.getElementById("galleryGrid");
 
 upload.addEventListener("change", function () {
 
@@ -31,9 +31,75 @@ upload.addEventListener("change", function () {
         `;
 
         gallery.prepend(card);
+        
+        const photo={
+
+title:file.name,
+
+image:e.target.result,
+
+date:new Date().toLocaleDateString()
+
+};
+
+savePhoto(photo);
 
     }
 
     reader.readAsDataURL(file);
 
 });
+
+// ===========================
+// SAVE PHOTO
+// ===========================
+
+function savePhoto(photo){
+
+let photos = JSON.parse(localStorage.getItem("gallery")) || [];
+
+photos.push(photo);
+
+localStorage.setItem("gallery", JSON.stringify(photos));
+
+}
+
+// ===========================
+// LOAD PHOTO
+// ===========================
+
+function loadGallery(){
+
+let photos = JSON.parse(localStorage.getItem("gallery")) || [];
+
+photos.forEach(photo=>{
+
+const card=document.createElement("div");
+
+card.className="photo-card";
+
+card.innerHTML=`
+
+<img src="${photo.image}" class="gallery-image">
+
+<div class="photo-info">
+
+<h3>${photo.title}</h3>
+
+<p>${photo.date}</p>
+
+<button class="delete-btn">Delete</button>
+
+</div>
+
+`;
+
+gallery.appendChild(card);
+
+});
+
+}
+
+// ===========================
+
+window.onload = loadGallery;
