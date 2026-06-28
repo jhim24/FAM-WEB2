@@ -32,6 +32,15 @@ upload.addEventListener("change", function () {
 
         gallery.prepend(card);
         
+        card.querySelector(".gallery-image").onclick = function(){
+
+document.getElementById("imageModal").style.display="flex";
+
+document.getElementById("previewImg").src=e.target.result;
+
+document.getElementById("previewName").innerText=file.name;
+
+};
         const photo={
 
 title:file.name,
@@ -103,3 +112,18 @@ gallery.appendChild(card);
 // ===========================
 
 window.onload = loadGallery;
+document.getElementById("closeImage").onclick=function(){
+
+document.getElementById("imageModal").style.display="none";
+
+};
+
+window.addEventListener("click",function(e){
+
+if(e.target==document.getElementById("imageModal")){
+
+document.getElementById("imageModal").style.display="none";
+
+}
+
+});
