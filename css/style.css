@@ -6,11 +6,17 @@ padding:0;
 
 box-sizing:border-box;
 
-font-family:Segoe UI,Arial,sans-serif;
-
 }
 
 body{
+
+margin:0;
+
+overflow-x:hidden;
+
+background:#F4F6F9;
+
+}
 
 background:#F4F6F9;
 
@@ -19,7 +25,12 @@ background:#F4F6F9;
 /* NAVBAR */
 
 .navbar{
+  
+width:100%;
 
+max-width:100%;
+
+overflow:hidden;
 height:80px;
 
 background:#5E3A8C;
