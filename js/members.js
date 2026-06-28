@@ -162,3 +162,52 @@ viewModal.style.display="flex";
 }
 
 });
+// ================= LOAD MEMBERS =================
+
+window.addEventListener("load",loadMembers);
+
+function loadMembers(){
+
+const members=JSON.parse(localStorage.getItem("members"))||[];
+
+members.forEach(member=>{
+
+const card=`
+
+<div class="member-card">
+
+<div class="avatar">
+
+<i class="fa-solid fa-user"></i>
+
+</div>
+
+<h2>${member.firstName} ${member.lastName}</h2>
+
+<p>${member.relationship}</p>
+
+<p>Birthday : ${member.birthday}</p>
+
+<p>Phone : ${member.phone}</p>
+
+<p>Email : ${member.email}</p>
+
+<div class="actions">
+
+<button class="view">View</button>
+
+<button class="edit">Edit</button>
+
+<button class="delete">Delete</button>
+
+</div>
+
+</div>
+
+`;
+
+membersGrid.insertAdjacentHTML("beforeend",card);
+
+});
+
+}
