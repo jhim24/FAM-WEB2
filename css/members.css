@@ -322,3 +322,62 @@ grid-template-columns:1fr;
 }
 
 }
+/* VIEW PROFILE */
+
+.profile-view{
+
+text-align:center;
+
+padding:20px;
+
+}
+
+.profile-avatar{
+
+width:120px;
+
+height:120px;
+
+background:#7B4DB6;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+margin:auto;
+
+font-size:50px;
+
+color:white;
+
+margin-bottom:20px;
+
+}
+
+.profile-view h2{
+
+margin-bottom:10px;
+
+color:#5E3A8C;
+
+}
+
+.profile-view p{
+
+margin:12px 0;
+
+font-size:17px;
+
+}
+
+.close-view{
+
+font-size:30px;
+
+cursor:pointer;
+
+}
