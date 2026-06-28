@@ -96,3 +96,41 @@ form.reset();
 
 modal.style.display = "none";
 });
+const viewModal = document.getElementById("viewModal");
+
+const closeView = document.querySelector(".close-view");
+
+closeView.onclick = () => {
+
+viewModal.style.display = "none";
+
+};
+
+document.addEventListener("click", function(e){
+
+if(e.target.classList.contains("view")){
+
+const card = e.target.closest(".member-card");
+
+const info = card.querySelectorAll("p");
+
+document.getElementById("viewName").textContent =
+card.querySelector("h2").textContent;
+
+document.getElementById("viewRelationship").textContent =
+info[0].textContent;
+
+document.getElementById("viewBirthday").textContent =
+info[1].textContent.replace("Birthday : ","");
+
+document.getElementById("viewPhone").textContent =
+info[2].textContent.replace("Phone : ","");
+
+document.getElementById("viewEmail").textContent =
+info[3].textContent.replace("Email : ","");
+
+viewModal.style.display="flex";
+
+}
+
+});
