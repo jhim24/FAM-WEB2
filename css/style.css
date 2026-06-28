@@ -557,6 +557,69 @@ background:#8D63C7;
    RESPONSIVE NAVBAR
 ========================================== */
 
+.navbar{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 35px;
+
+height:80px;
+
+background:#5E3A8C;
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+text-decoration:none;
+
+color:white;
+
+font-size:28px;
+
+font-weight:bold;
+
+}
+
+.logo i{
+
+font-size:32px;
+
+}
+
+.nav-right{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+}
 .nav-left{
 display:flex;
 align-items:center;
@@ -687,4 +750,12 @@ font-size:22px;
 display:none;
 }
 
+.profile-img{
+width:38px;
+height:38px;
+}
+
+}
+.hero{
+margin-top:0;
 }
