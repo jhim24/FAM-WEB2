@@ -3,95 +3,179 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Family Tree</title>
+    <title>Lozada Family Tree</title>
 
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/family-tree.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/family-tree.css">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<header class="page-header">
+    <!-- HEADER -->
 
-<h1>
+    <header class="page-header">
 
-<i class="fa-solid fa-tree"></i>
+        <div class="header-left">
 
-Family Tree
+            <a href="../index.html" class="back-btn">
 
-</h1>
+                <i class="fa-solid fa-arrow-left"></i>
 
-</header>
+            </a>
 
-<section class="tree-container">
+            <h1>
 
-<h2>Lozada Family Tree</h2>
+                <i class="fa-solid fa-tree"></i>
 
-<div class="tree">
+                Lozada Family Tree
 
-    <!-- Grandparents -->
-    <div class="generation">
-
-        <div class="member">
-
-            <div class="avatar">
-                <i class="fa-solid fa-user"></i>
-            </div>
-
-            <h3>Grandfather</h3>
+            </h1>
 
         </div>
 
-        <div class="member">
+        <button class="add-member">
 
-            <div class="avatar">
-                <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user-plus"></i>
+
+            Add Member
+
+        </button>
+
+    </header>
+
+    <!-- TREE -->
+
+    <section class="tree-wrapper">
+
+        <!-- GRANDPARENTS -->
+
+        <div class="generation">
+
+            <div class="member-card">
+
+                <div class="avatar">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+                <h3>Pedro Lozada</h3>
+
+                <span>Grandfather</span>
+
             </div>
 
-            <h3>Grandmother</h3>
+            <div class="member-card">
+
+                <div class="avatar">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+                <h3>Maria Lozada</h3>
+
+                <span>Grandmother</span>
+
+            </div>
 
         </div>
 
-    </div>
+        <div class="vertical-line"></div>
 
-    <div class="line"></div>
+        <!-- PARENTS -->
 
-    <!-- Parents -->
+        <div class="generation">
 
-    <div class="generation">
+            <div class="member-card">
 
-        <div class="member">
+                <div class="avatar">
 
-            <div class="avatar">
-                <i class="fa-solid fa-user-tie"></i>
+                    <i class="fa-solid fa-user-tie"></i>
+
+                </div>
+
+                <h3>Juan Lozada</h3>
+
+                <span>Father</span>
+
             </div>
 
-            <h3>Father</h3>
+            <div class="member-card">
+
+                <div class="avatar">
+
+                    <i class="fa-solid fa-person-dress"></i>
+
+                </div>
+
+                <h3>Ana Lozada</h3>
+
+                <span>Mother</span>
+
+            </div>
 
         </div>
 
-        <div class="member">
+        <div class="vertical-line"></div>
 
-            <div class="avatar">
-                <i class="fa-solid fa-person-dress"></i>
+        <!-- CHILDREN -->
+
+        <div class="generation">
+
+            <div class="member-card">
+
+                <div class="avatar">
+
+                    <i class="fa-solid fa-child"></i>
+
+                </div>
+
+                <h3>Mark Lozada</h3>
+
+                <span>Son</span>
+
             </div>
 
-            <h3>Mother</h3>
+            <div class="member-card">
+
+                <div class="avatar">
+
+                    <i class="fa-solid fa-child-dress"></i>
+
+                </div>
+
+                <h3>Jane Lozada</h3>
+
+                <span>Daughter</span>
+
+            </div>
+
+            <div class="member-card">
+
+                <div class="avatar">
+
+                    <i class="fa-solid fa-baby"></i>
+
+                </div>
+
+                <h3>Baby Lozada</h3>
+
+                <span>Youngest Child</span>
+
+            </div>
 
         </div>
 
-    </div>
-
-</div>
-</section>
+    </section>
 
 </body>
 
