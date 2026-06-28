@@ -18,10 +18,6 @@ background:#F4F6F9;
 
 }
 
-background:#F4F6F9;
-
-}
-
 /* NAVBAR */
 
 .navbar{
@@ -155,6 +151,7 @@ padding:0 20px;
 
 font-size:22px;
 
+}
 }
   /* ================= HERO ================= */
 
@@ -692,3 +689,211 @@ border:1px solid rgba(255,255,255,.3);
 background:#8D63C7;
 
 }
+/* ================= MOBILE NAVBAR ================= */
+
+@media (max-width:768px){
+
+.navbar{
+
+padding:15px;
+
+height:70px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+.logo{
+
+font-size:20px;
+
+}
+
+.logo span{
+
+font-size:20px;
+
+}
+
+.nav-right{
+
+display:flex;
+
+gap:10px;
+
+}
+
+.nav-btn{
+
+display:none;
+
+}
+
+.profile img{
+
+width:40px;
+
+height:40px;
+
+}
+
+/* ================= MOBILE NAVBAR ================= */
+
+@media (max-width:768px){
+
+.navbar{
+
+padding:15px;
+
+height:70px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+.logo{
+
+font-size:20px;
+
+}
+
+.logo span{
+
+font-size:20px;
+
+}
+
+.nav-right{
+
+display:flex;
+
+gap:10px;
+
+}
+
+.nav-btn{
+
+display:none;
+
+}
+
+.profile img{
+
+width:40px;
+
+height:40px;
+
+}
+
+/* ================= MOBILE NAVBAR ================= */
+
+@media (max-width:768px){
+
+.navbar{
+
+padding:15px;
+
+height:70px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+.logo{
+
+font-size:20px;
+
+}
+
+.logo span{
+
+font-size:20px;
+
+}
+
+.nav-right{
+
+display:flex;
+
+gap:10px;
+
+}
+
+.nav-btn{
+
+display:none;
+
+}
+
+.profile img{
+
+width:40px;
+
+height:40px;
+
+}
+
+/* ================= MOBILE NAVBAR ================= */
+
+@media (max-width:768px){
+
+.navbar{
+
+padding:15px;
+
+height:70px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+.logo{
+
+font-size:20px;
+
+}
+
+.logo span{
+
+font-size:20px;
+
+}
+
+.nav-right{
+
+display:flex;
+
+gap:10px;
+
+}
+
+.nav-btn{
+
+display:none;
+
+}
+
+.profile img{
+
+width:40px;
+
+height:40px;
+
+}
+
