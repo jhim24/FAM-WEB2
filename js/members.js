@@ -1,178 +1,118 @@
+// ===============================
+// FAMILY MEMBERS SYSTEM - PART 1
+// ===============================
+
+// ELEMENTS
 const modal = document.getElementById("memberModal");
+const viewModal = document.getElementById("viewModal");
 
 const openBtn = document.querySelector(".add-btn");
-
 const closeBtn = document.querySelector(".close");
+const closeViewBtn = document.querySelector(".close-view");
 
 const form = document.getElementById("memberForm");
-
 const membersGrid = document.getElementById("membersGrid");
 
-// Open Modal
-openBtn.onclick = function () {
+// LOCAL STORAGE
+let members = JSON.parse(localStorage.getItem("members")) || [];
+
+// ===============================
+// MODAL
+// ===============================
+
+openBtn.onclick = () => {
     modal.style.display = "flex";
 };
 
-// Close Modal
-closeBtn.onclick = function () {
+closeBtn.onclick = () => {
     modal.style.display = "none";
 };
 
-// Close kapag nag-click sa labas ng modal
-window.onclick = function (event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
+closeViewBtn.onclick = () => {
+    viewModal.style.display = "none";
 };
 
-// Save Member
+window.onclick = function (e) {
+
+    if (e.target === modal) {
+
+        modal.style.display = "none";
+
+    }
+
+    if (e.target === viewModal) {
+
+        viewModal.style.display = "none";
+
+    }
+
+};
+
+// ===============================
+// SAVE MEMBER
+// ===============================
+
 form.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
-    const firstName = document.getElementById("firstName").value;
+    const member = {
 
-    const lastName = document.getElementById("lastName").value;
+        id: Date.now(),
 
-    const relationship = document.getElementById("relationship").value;
+        firstName: document.getElementById("firstName").value,
 
-    const birthday = document.getElementById("birthday").value;
+        lastName: document.getElementById("lastName").value,
 
-    const phone = document.getElementById("phone").value;
+        relationship: document.getElementById("relationship").value,
 
-    const email = document.getElementById("email").value;
+        birthday: document.getElementById("birthday").value,
 
-    const newCard = `
-    
-    <div class="member-card">
+        phone: document.getElementById("phone").value,
 
-        <div class="avatar">
+        email: document.getElementById("email").value
 
-            <i class="fa-solid fa-user"></i>
+    };
 
-        </div>
+    members.push(member);
 
-        <h2>${firstName} ${lastName}</h2>
+    saveMembers();
 
-        <p>${relationship}</p>
+    renderMembers();
 
-        <p>Birthday : ${birthday}</p>
+    form.reset();
 
-        <p>Phone : ${phone}</p>
-
-        <p>Email : ${email}</p>
-
-        <div class="actions">
-
-            <button class="view">View</button>
-
-            <button class="edit">Edit</button>
-
-            <button class="delete">Delete</button>
-
-        </div>
-
-    </div>
-
-    `;
-
- membersGrid.insertAdjacentHTML("beforeend", newCard);
-
-// SAVE TO LOCAL STORAGE
-
-const member={
-
-firstName:firstName,
-
-lastName:lastName,
-
-relationship:relationship,
-
-birthday:birthday,
-
-phone:phone,
-
-email:email
-
-};
-
-let members=JSON.parse(localStorage.getItem("members"))||[];
-
-members.push(member);
-
-localStorage.setItem("members",JSON.stringify(members));
-
-form.reset();
-
-modal.style.display="none";
-
-// Hanapin ang huling card na naidagdag
-const lastCard = membersGrid.lastElementChild;
-
-// Delete Button
-lastCard.querySelector(".delete").addEventListener("click", function(){
-
-    if(confirm("Delete this family member?")){
-
-        lastCard.remove();
-
-    }
+    modal.style.display = "none";
 
 });
 
-form.reset();
+// ===============================
+// SAVE LOCAL STORAGE
+// ===============================
 
-modal.style.display = "none";
-});
-const viewModal = document.getElementById("viewModal");
+function saveMembers(){
 
-const closeView = document.querySelector(".close-view");
+    localStorage.setItem(
 
-closeView.onclick = () => {
+        "members",
 
-viewModal.style.display = "none";
+        JSON.stringify(members)
 
-};
-
-document.addEventListener("click", function(e){
-
-if(e.target.classList.contains("view")){
-
-const card = e.target.closest(".member-card");
-
-const info = card.querySelectorAll("p");
-
-document.getElementById("viewName").textContent =
-card.querySelector("h2").textContent;
-
-document.getElementById("viewRelationship").textContent =
-info[0].textContent;
-
-document.getElementById("viewBirthday").textContent =
-info[1].textContent.replace("Birthday : ","");
-
-document.getElementById("viewPhone").textContent =
-info[2].textContent.replace("Phone : ","");
-
-document.getElementById("viewEmail").textContent =
-info[3].textContent.replace("Email : ","");
-
-viewModal.style.display="flex";
+    );
 
 }
 
-});
-// ================= LOAD MEMBERS =================
+// ===============================
+// RENDER MEMBERS
+// ===============================
 
-window.addEventListener("load",loadMembers);
+function renderMembers(){
 
-function loadMembers(){
+    membersGrid.innerHTML = "";
 
-const members=JSON.parse(localStorage.getItem("members"))||[];
+    members.forEach(member=>{
 
-members.forEach(member=>{
-
-const card=`
+        membersGrid.innerHTML += `
 
 <div class="member-card">
 
@@ -194,11 +134,29 @@ const card=`
 
 <div class="actions">
 
-<button class="view">View</button>
+<button
+class="view"
+data-id="${member.id}">
 
-<button class="edit">Edit</button>
+View
 
-<button class="delete">Delete</button>
+</button>
+
+<button
+class="edit"
+data-id="${member.id}">
+
+Edit
+
+</button>
+
+<button
+class="delete"
+data-id="${member.id}">
+
+Delete
+
+</button>
 
 </div>
 
@@ -206,8 +164,106 @@ const card=`
 
 `;
 
-membersGrid.insertAdjacentHTML("beforeend",card);
+    });
+
+}
+
+renderMembers();
+// ===============================
+// DELETE • VIEW • SEARCH
+// ===============================
+
+// DELETE MEMBER
+document.addEventListener("click", function (e) {
+
+    // DELETE
+    if (e.target.classList.contains("delete")) {
+
+        const id = Number(e.target.dataset.id);
+
+        if (confirm("Delete this family member?")) {
+
+            members = members.filter(member => member.id !== id);
+
+            saveMembers();
+
+            renderMembers();
+
+        }
+
+    }
+
+    // VIEW
+    if (e.target.classList.contains("view")) {
+
+        const id = Number(e.target.dataset.id);
+
+        const member = members.find(m => m.id === id);
+
+        if (!member) return;
+
+        document.getElementById("viewName").textContent =
+            member.firstName + " " + member.lastName;
+
+        document.getElementById("viewRelationship").textContent =
+            member.relationship;
+
+        document.getElementById("viewBirthday").textContent =
+            member.birthday || "-";
+
+        document.getElementById("viewPhone").textContent =
+            member.phone || "-";
+
+        document.getElementById("viewEmail").textContent =
+            member.email || "-";
+
+        viewModal.style.display = "flex";
+
+    }
 
 });
 
-}
+// ===============================
+// SEARCH MEMBER
+// ===============================
+
+const searchInput = document.querySelector(".search-area input");
+
+searchInput.addEventListener("keyup", function () {
+
+    const keyword = this.value.toLowerCase();
+
+    const cards = document.querySelectorAll(".member-card");
+
+    cards.forEach(card => {
+
+        const name = card.querySelector("h2").textContent.toLowerCase();
+
+        const relationship = card.querySelector("p").textContent.toLowerCase();
+
+        if (
+            name.includes(keyword) ||
+            relationship.includes(keyword)
+        ) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+});
+
+// ===============================
+// INITIAL LOAD
+// ===============================
+
+window.onload = function () {
+
+    renderMembers();
+
+};
