@@ -76,7 +76,35 @@ form.addEventListener("submit", function (e) {
 
     `;
 
-   membersGrid.insertAdjacentHTML("beforeend", newCard);
+ membersGrid.insertAdjacentHTML("beforeend", newCard);
+
+// SAVE TO LOCAL STORAGE
+
+const member={
+
+firstName:firstName,
+
+lastName:lastName,
+
+relationship:relationship,
+
+birthday:birthday,
+
+phone:phone,
+
+email:email
+
+};
+
+let members=JSON.parse(localStorage.getItem("members"))||[];
+
+members.push(member);
+
+localStorage.setItem("members",JSON.stringify(members));
+
+form.reset();
+
+modal.style.display="none";
 
 // Hanapin ang huling card na naidagdag
 const lastCard = membersGrid.lastElementChild;
