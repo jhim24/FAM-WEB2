@@ -4,24 +4,82 @@ const openBtn = document.querySelector(".add-btn");
 
 const closeBtn = document.querySelector(".close");
 
-openBtn.onclick = () => {
+const form = document.getElementById("memberForm");
 
-modal.style.display = "flex";
+const membersGrid = document.getElementById("membersGrid");
 
-}
+// Open Modal
+openBtn.onclick = function () {
+    modal.style.display = "flex";
+};
 
-closeBtn.onclick = () => {
+// Close Modal
+closeBtn.onclick = function () {
+    modal.style.display = "none";
+};
 
-modal.style.display = "none";
+// Close kapag nag-click sa labas ng modal
+window.onclick = function (event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
 
-}
+// Save Member
+form.addEventListener("submit", function (e) {
 
-window.onclick = (e)=>{
+    e.preventDefault();
 
-if(e.target==modal){
+    const firstName = document.getElementById("firstName").value;
 
-modal.style.display="none";
+    const lastName = document.getElementById("lastName").value;
 
-}
+    const relationship = document.getElementById("relationship").value;
 
-}
+    const birthday = document.getElementById("birthday").value;
+
+    const phone = document.getElementById("phone").value;
+
+    const email = document.getElementById("email").value;
+
+    const newCard = `
+    
+    <div class="member-card">
+
+        <div class="avatar">
+
+            <i class="fa-solid fa-user"></i>
+
+        </div>
+
+        <h2>${firstName} ${lastName}</h2>
+
+        <p>${relationship}</p>
+
+        <p>Birthday : ${birthday}</p>
+
+        <p>Phone : ${phone}</p>
+
+        <p>Email : ${email}</p>
+
+        <div class="actions">
+
+            <button class="view">View</button>
+
+            <button class="edit">Edit</button>
+
+            <button class="delete">Delete</button>
+
+        </div>
+
+    </div>
+
+    `;
+
+    membersGrid.insertAdjacentHTML("beforeend", newCard);
+
+    form.reset();
+
+    modal.style.display = "none";
+
+});
