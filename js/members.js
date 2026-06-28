@@ -15,7 +15,7 @@ const membersGrid = document.getElementById("membersGrid");
 
 // LOCAL STORAGE
 let members = JSON.parse(localStorage.getItem("members")) || [];
-
+let editingId = null;
 // ===============================
 // MODAL
 // ===============================
@@ -74,11 +74,25 @@ form.addEventListener("submit", function (e) {
 
     };
 
+   if(editingId){
+
+    const index = members.findIndex(m => m.id === editingId);
+
+    member.id = editingId;
+
+    members[index] = member;
+
+    editingId = null;
+
+}else{
+
     members.push(member);
 
-    saveMembers();
+}
 
-    renderMembers();
+saveMembers();
+
+renderMembers();
 
     form.reset();
 
@@ -267,3 +281,36 @@ window.onload = function () {
     renderMembers();
 
 };
+// ===============================
+// EDIT MEMBER
+// ===============================
+
+document.addEventListener("click", function(e){
+
+    if(e.target.classList.contains("edit")){
+
+        const id = Number(e.target.dataset.id);
+
+        const member = members.find(m => m.id === id);
+
+        if(!member) return;
+
+        editingId = id;
+
+        document.getElementById("firstName").value = member.firstName;
+
+        document.getElementById("lastName").value = member.lastName;
+
+        document.getElementById("relationship").value = member.relationship;
+
+        document.getElementById("birthday").value = member.birthday;
+
+        document.getElementById("phone").value = member.phone;
+
+        document.getElementById("email").value = member.email;
+
+        modal.style.display = "flex";
+
+    }
+
+});
