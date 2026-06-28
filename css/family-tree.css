@@ -44,16 +44,15 @@ body{
 
 .tree{
 
-    display:flex;
+display:flex;
 
-    justify-content:center;
+flex-direction:column;
 
-    gap:120px;
+align-items:center;
 
-    flex-wrap:wrap;
+gap:50px;
 
 }
-
 .member{
 
     background:white;
@@ -103,5 +102,28 @@ body{
 .member h3{
 
     margin-top:20px;
+
+}
+.generation{
+
+display:flex;
+
+justify-content:center;
+
+gap:100px;
+
+flex-wrap:wrap;
+
+}
+
+.line{
+
+width:4px;
+
+height:70px;
+
+background:#7B4DB6;
+
+border-radius:20px;
 
 }
