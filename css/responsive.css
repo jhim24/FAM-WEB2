@@ -121,7 +121,75 @@ grid-template-columns:1fr 1fr;
 /* Mobile */
 
 @media(max-width:768px){
+/* MOBILE NAVBAR */
 
+.navbar{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:12px 15px;
+
+overflow:hidden;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+.logo{
+
+font-size:16px;
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+}
+
+.logo span{
+
+font-size:16px;
+
+}
+
+.nav-right{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+}
+
+.nav-right i{
+
+font-size:18px;
+
+}
+
+.profile img{
+
+width:38px;
+
+height:38px;
+
+}
+
+.nav-btn{
+
+display:none;
+
+}
 .navbar{
 
 padding:15px;
